@@ -1,7 +1,7 @@
 <?php
-// VISTA PARA LA LISTA DE LIBROS
+// VISTA PARA LA LISTA DE usuario
 
-// Recuperamos la lista de libros
+// Recuperamos la lista de usuario
 $listaUsuarios = $data["listaUsuarios"];
 
 // Si hay algún mensaje de feedback, lo mostramos
@@ -12,7 +12,7 @@ if (isset($data["info"])) {
 if (isset($data["error"])) {
   echo "<div style='color:red'>".$data["error"]."</div>";
 }
-                        /* REVISAR*/
+
 echo "<form class='d-flex form-control' action='index.php'> 
       <input type='hidden' name='controller' value='UsuariosController'>
         <input type='hidden' name='action' value='buscarUsuarios'>
@@ -20,7 +20,7 @@ echo "<form class='d-flex form-control' action='index.php'>
         <input class='btn btn-outline-dark' type='submit' value='Buscar'>
       </form><br>";
 
-// Ahora, la tabla con los datos de los recursos
+// Ahora, la tabla con los datos de los usuario
 if (count($listaUsuarios) == 0) {
   echo "No hay datos";
 } else {

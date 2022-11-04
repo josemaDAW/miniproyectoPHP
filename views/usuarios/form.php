@@ -1,10 +1,10 @@
 <?php
-                                        // VISTA PARA INSERCIÓN/EDICIÓN DE RECURSOS
+                                        // VISTA PARA INSERCIÓN/EDICIÓN DE usuario
 if ($data != null) {   
 extract($data);
 }
 // Vamos a usar la misma vista para insertar y modificar. Para saber si hacemos una cosa u otra,
-// usaremos la variable $libro: si existe, es porque estamos modificando un libro. Si no, estamos insertando uno nuevo.
+
 
 if (isset($listaUsuarios)) {   
     echo "<h1>Modificación de Usuarios</h1>";
@@ -12,15 +12,15 @@ if (isset($listaUsuarios)) {
     echo "<h1>Inserción de Usuarios</h1>";
 }
 
-// Sacamos los datos del libro (si existe) a variables individuales para mostrarlo en los inputs del formulario.
-// (Si no hay libro, dejamos los campos en blanco y el formulario servirá para inserción).
+// Sacamos los datos del usuario (si existe) a variables individuales para mostrarlo en los inputs del formulario.
+// (Si no hay usuario, dejamos los campos en blanco y el formulario servirá para inserción).
 $id = $listaUsuarios->id ?? "";
 $usuario = $listaUsuarios->usuario ?? "";
 $contraseña = $listaUsuarios->contraseña ?? "";
 $nombre = $listaUsuarios->nombre ?? "";
 $tipo = $listaUsuarios->tipo ?? "";
 
-// Creamos el formulario con los campos del libro
+// Creamos el formulario con los campos del usuario
 echo "<form action = 'index.php' method = 'get'>
         <div class='d-grid gap-1 col-3 mx-auto'>
         <input type='hidden' name='id' value='$id'><br>   

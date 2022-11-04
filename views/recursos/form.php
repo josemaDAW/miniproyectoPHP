@@ -4,7 +4,7 @@ if ($data != null) {
 extract($data);
 }
 // Vamos a usar la misma vista para insertar y modificar. Para saber si hacemos una cosa u otra,
-// usaremos la variable $libro: si existe, es porque estamos modificando un libro. Si no, estamos insertando uno nuevo.
+
 
 if (isset($recursos)) {   
     echo "<h1>Modificación de Recursos</h1>";
@@ -13,14 +13,14 @@ if (isset($recursos)) {
 }
 
 // Sacamos los datos del recurso (si existe) a variables individuales para mostrarlo en los inputs del formulario.
-// (Si no hay libro, dejamos los campos en blanco y el formulario servirá para inserción).
+// (Si no hay recurso, dejamos los campos en blanco y el formulario servirá para inserción).
 $id = $recursos->id ?? "";
 $nombre = $recursos->nombre ?? "";
 $Descripcion = $recursos->Descripcion ?? "";
 $localizacion = $recursos->localizacion ?? "";
 $imagen = $recursos->imagen ?? "";
 
-// Creamos el formulario con los campos del libro
+// Creamos el formulario con los campos del recursos
 echo "<form action = 'index.php' method = 'post' enctype='multipart/form-data'> 
         <div class='d-grid gap-4 col-4 mx-auto'>
         <input type='hidden' name='id' value='$id'>

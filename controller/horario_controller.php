@@ -12,7 +12,7 @@ class HorarioController
         $this->horario = new Horario();
     } 
 
-        // --------------------------------- MOSTRAR RECURSOS ------------------------------------------------
+        // --------------------------------- MOSTRAR HORARIO ------------------------------------------------
         public function mostrarListaHorario()
         {
             if (Seguridad::haySesion()) {
@@ -62,9 +62,9 @@ class HorarioController
        public function borrarHorario()
        {
            if (Seguridad::haySesion()) {
-               // Recuperamos el id del recurso que hay que borrar
+               // Recuperamos el id del horario que hay que borrar
                $id = Seguridad::limpiar($_REQUEST["id"]);
-               // Pedimos al modelo que intente borrar el recurso
+               // Pedimos al modelo que intente borrar el horario
                $result = $this->horario->delete($id);
                // Comprobamos si el borrado ha tenido éxito
                if ($result == 0) {
@@ -86,10 +86,9 @@ class HorarioController
     public function formularioModificarHorario()
     {
         if (Seguridad::haySesion()) {
-            // Recuperamos los datos del libro a modificar
+            // Recuperamos los datos del horarios a modificar
             $result = $this->horario->get(($_REQUEST["id"]));
             $data["listaHorario"] = $result[0];
-           //var_dump ($data["recurso"]);
            View::render("horario/form", $data);
         }
         
@@ -119,17 +118,17 @@ class HorarioController
     }
 
 
-        // --------------------------------- BUSCAR RECURSOS ----------------------------------------
+        // --------------------------------- BUSCAR horarios ----------------------------------------
 
         public function buscarHorario()
         {
             if (Seguridad::haySesion()) {
                 // Recuperamos el texto de búsqueda de la variable de formulario
                 $textoBusqueda = Seguridad::limpiar($_REQUEST["textoBusqueda"]);
-                // Buscamos los recursos que coinciden con la búsqueda
+                // Buscamos los horario que coinciden con la búsqueda
                 $data["listaHorario"] = $this->horario->search($textoBusqueda);
                 $data["info"] = "Resultados de la búsqueda: <i>$textoBusqueda</i>";
-                // Mostramos el resultado en la misma vista que la lista completa de libros
+                // Mostramos el resultado en la misma vista que la lista completa de horarios
                 View::render("horario/all", $data);
                
             }

@@ -97,7 +97,7 @@ class RecursosController
     public function formularioModificarRecursos()
     {
         if (Seguridad::haySesion()) {
-            // Recuperamos los datos del libro a modificar
+            // Recuperamos los datos del recurso a modificar
             $result = $this->recursos->get(($_REQUEST["id"]));
             $data["recursos"] = $result[0];
            //var_dump ($data["recurso"]);
@@ -142,7 +142,7 @@ class RecursosController
                 // Buscamos los recursos que coinciden con la búsqueda
                 $data["listaRecursos"] = $this->recursos->search($textoBusqueda);
                 $data["info"] = "Resultados de la búsqueda: <i>$textoBusqueda</i>";
-                // Mostramos el resultado en la misma vista que la lista completa de libros
+                // Mostramos el resultado en la misma vista que la lista completa de recurso
                 View::render("recursos/all", $data);
                
             }else {
@@ -172,7 +172,7 @@ class RecursosController
     public function formularioReservarRecurso()
     {
         if (Seguridad::haySesion()) {
-            // Recuperamos los datos del libro a modificar
+            // Recuperamos los datos del recurso a modificar
             $result = $this->recursos->get(($_REQUEST["id"]));
             $result2 = $this->horario->getAll(); 
             $data["recursos"] = $result[0];

@@ -1,14 +1,11 @@
 <?php
-/* CONTROLADOR DE RECURSOS
-include_once("models/libro.php");  // Modelos
-include_once("models/autor.php");*/
 include_once("models/usuarios.php");
 include_once("view.php");
 
 class UsuariosController
 {
     private $db;             // Conexión con la base de datos
-    private $usuarios;  // Modelos
+    private $usuarios;      // Modelos
 
     public function __construct()
     {
@@ -94,15 +91,15 @@ class UsuariosController
        public function borrarUsuarios()
        {
            if (Seguridad::haySesion()) {
-               // Recuperamos el id del recurso que hay que borrar
+               // Recuperamos el id del usuario que hay que borrar
                $id = Seguridad::limpiar($_REQUEST["id"]);
-               // Pedimos al modelo que intente borrar el recurso
+               // Pedimos al modelo que intente borrar el usuario
                $result = $this->usuarios->delete($id);
                // Comprobamos si el borrado ha tenido éxito
                if ($result == 0) {
-                   $data["error"] = "Ha ocurrido un error al borrar el libro. Por favor, inténtelo de nuevo";
+                   $data["error"] = "Ha ocurrido un error al borrar el usuario. Por favor, inténtelo de nuevo";
                } else {
-                   $data["info"] = "Recurso borrado con éxito";
+                   $data["info"] = "usuario borrado con éxito";
                }
                header("Location: index.php?controller=UsuariosController&action=mostrarListaUsuarios");
 
@@ -118,10 +115,9 @@ class UsuariosController
     public function formularioModificarUsuarios()
     {
         if (Seguridad::haySesion()) {
-            // Recuperamos los datos del libro a modificar
+            // Recuperamos los datos del usuario a modificar
             $result = $this->usuarios->get(($_REQUEST["id"]));
             $data["listaUsuarios"] = $result[0];
-           //var_dump ($data["recurso"]);
            View::render("usuarios/form", $data);
         }
         
@@ -152,17 +148,17 @@ class UsuariosController
     }
 
 
-        // --------------------------------- BUSCAR RECURSOS ----------------------------------------
+        // --------------------------------- BUSCAR usuario ----------------------------------------
 
         public function buscarUsuarios()
         {
             if (Seguridad::haySesion()) {
                 // Recuperamos el texto de búsqueda de la variable de formulario
                 $textoBusqueda = /*Seguridad::limpiar*/($_REQUEST["textoBusqueda"]);
-                // Buscamos los recursos que coinciden con la búsqueda
+                // Buscamos los usuarios que coinciden con la búsqueda
                 $data["listaUsuarios"] = $this->usuarios->search($textoBusqueda);
                 $data["info"] = "Resultados de la búsqueda: <i>$textoBusqueda</i>";
-                // Mostramos el resultado en la misma vista que la lista completa de libros
+                // Mostramos el resultado en la misma vista que la lista completa de usuario
                 View::render("usuarios/all", $data);
                
             }

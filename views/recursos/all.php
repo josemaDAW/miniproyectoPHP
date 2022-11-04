@@ -1,7 +1,7 @@
 <?php
-// VISTA PARA LA LISTA DE LIBROS
+// VISTA PARA LA LISTA DE recursos
 
-// Recuperamos la lista de libros
+// Recuperamos la lista de recursos
 $listaRecursos = $data["listaRecursos"];
 
 // Si hay algún mensaje de feedback, lo mostramos
@@ -12,7 +12,7 @@ if (isset($data["info"])) {
 if (isset($data["error"])) {
   echo "<div style='color:red'>".$data["error"]."</div>";
 }
-                        /* REVISAR*/
+
 echo "<form class='d-flex form-control' action='index.php'> 
     <input type='hidden' name='controller' value='RecursosController'>
         <input type='hidden' name='action' value='buscarRecursos'>

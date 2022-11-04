@@ -31,17 +31,17 @@ class Usuarios extends Model
     }
 
 
-       // Inserta un libro. Devuelve 1 si tiene éxito o 0 si falla.
+       // Inserta un usuario. Devuelve 1 si tiene éxito o 0 si falla.
        public function insert($usuario, $contraseña, $nombre,$tipo)
        {
            return $this->db->dataManipulation("INSERT INTO usuarios (usuario,contraseña,nombre,tipo) VALUES ('$usuario','$contraseña', '$nombre','$tipo')");
        }
 
-           // Busca un texto en las tablas de libros y autores. Devuelve un array de objetos con todos los libros
+           // Busca un texto en las tablas de usuario y autores. Devuelve un array de objetos con todos los usuario
     // que cumplen el criterio de búsqueda.
     public function search($textoBusqueda)
     {
-        // Buscamos los libros de la biblioteca que coincidan con el texto de búsqueda
+        // Buscamos los usuario de la biblioteca que coincidan con el texto de búsqueda
         $result = $this->db->dataQuery("SELECT * FROM usuarios
 					                    WHERE usuarios.usuario LIKE '%$textoBusqueda%'
 					                    OR usuarios.contraseña LIKE '%$textoBusqueda%'
@@ -51,7 +51,7 @@ class Usuarios extends Model
         return $result;
     }
     
-        // Actualiza un libro (todo menos sus autores). Devuelve 1 si tiene éxito y 0 en caso de fallo.
+        // Actualiza un usuario (todo menos sus autores). Devuelve 1 si tiene éxito y 0 en caso de fallo.
         public function update($id,$usuario, $contraseña, $nombre,$tipo)
         {
 
