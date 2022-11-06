@@ -51,8 +51,14 @@ class Recursos extends Model
 
 class Reservas extends Model
 {
-public function insert2($idRecurso, $idUsuarios, $idHorario, $fecha,$observaciones)
+    public function __construct()
+    {
+        $this->table = "reservas";
+        $this->idColumn = "idRecurso";
+        parent::__construct();
+    }
+public function insert2($idRecurso, $idUsuarios, $idHorario, $fecha)
 {
-    return $this->db->dataManipulation("INSERT INTO reservas (idRecurso,idUsuarios,idHorario,fecha,observaciones) VALUES ('$idRecurso','$idUsuarios', '$idHorario', '$fecha','$observaciones')");
+    return $this->db->dataManipulation("INSERT INTO reservas (idRecurso,idUsuarios,idHorario,fecha) VALUES ('$idRecurso','$idUsuarios', '$idHorario', '$fecha')");
 }
 }

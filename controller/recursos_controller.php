@@ -175,9 +175,10 @@ class RecursosController
             // Recuperamos los datos del recurso a modificar
             $result = $this->recursos->get(($_REQUEST["id"]));
             $result2 = $this->horario->getAll(); 
+            $result3 = $this->reservas->getAll(); 
             $data["recursos"] = $result[0];
             $data["listaHorario"] = $result2;
-           //var_dump ($data["recurso"]);
+            $data["reservas"] = $result3;
            View::render("recursos/reserva", $data);
         }else {
             $data["error"] = "No tienes permiso para eso";
@@ -192,14 +193,14 @@ class RecursosController
            {
                if (Seguridad::haySesion()) {
                    // Primero, recuperamos todos los datos del formulario
-                   $idRecurso = Seguridad::limpiar($_REQUEST["idRecurso"]);
-                   $idUsuarios = Seguridad::limpiar($_REQUEST["idUsuarios"]);
-                   $idHorario = Seguridad::limpiar($_REQUEST["idHorario"]);
-                   $fecha = Seguridad::limpiar($_REQUEST["fecha"]);
-                   $observaciones = Seguridad::limpiar($_REQUEST["observaciones"]);
+                   $idRecurso = /*Seguridad::limpiar*/($_REQUEST["id"]);
+                   $idUsuarios = Seguridad::getIdUsuario();
+                   $idHorario = Seguridad::limpiar($_REQUEST["horario"]);
+                   $fecha = Seguridad::limpiar($_REQUEST["reserva"]);
                    
-                   $result = $this->reservas->insert2($idRecurso, $idUsuarios, $idHorario, $fecha,$observaciones);
-                   header("Location: index.php?controller=RecursosController&action=mostrarReservas");
+                   $result = $this->reservas->insert2($idRecurso, $idUsuarios, $idHorario, $fecha);
+                   View::render("recursos/reservarLista", $data);
+                  // header("Location: index.php?controller=RecursosController&action=mostrarReservas");
 
            }
               
@@ -210,7 +211,7 @@ class RecursosController
         {
             $result = $this->reservas->getAll(); 
             $data["reservas"] = $result[0];
-           View::render("recursos/reservaLista", $data);
+           View::render("recursos/reservarLista", $data);
      
        }
        
