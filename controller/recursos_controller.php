@@ -210,7 +210,7 @@ class RecursosController
          public function mostrarReservas()
         {
             $result3 = $this->reservas->getAll(); 
-            $data["reserva"] = $result3;
+            $data["listaReservas"] = $result3;
            View::render("recursos/reservarLista", $data);
      
        }
