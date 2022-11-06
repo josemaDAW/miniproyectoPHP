@@ -2,7 +2,7 @@
 // VISTA PARA LA LISTA DE LIBROS
 
 // Recuperamos la lista de libros
-$reservas = $data["reservas"];
+$reservas = $data["reserva"];
 
 // Si hay algún mensaje de feedback, lo mostramos
 if (isset($data["info"])) {

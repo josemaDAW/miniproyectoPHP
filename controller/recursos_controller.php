@@ -178,7 +178,7 @@ class RecursosController
             $result3 = $this->reservas->getAll(); 
             $data["recursos"] = $result[0];
             $data["listaHorario"] = $result2;
-            $data["reservas"] = $result3;
+            $data["reserva"] = $result3;
            View::render("recursos/reserva", $data);
         }else {
             $data["error"] = "No tienes permiso para eso";
@@ -209,8 +209,8 @@ class RecursosController
         // --------------------------------- MOSTRAR reserva ------------------------------------------------
          public function mostrarReservas()
         {
-            $result = $this->reservas->getAll(); 
-            $data["reservas"] = $result[0];
+            $result3 = $this->reservas->getAll(); 
+            $data["reserva"] = $result3;
            View::render("recursos/reservarLista", $data);
      
        }
