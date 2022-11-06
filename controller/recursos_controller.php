@@ -203,7 +203,7 @@ class RecursosController
                   // header("Location: index.php?controller=RecursosController&action=mostrarReservas");
 
            }
-              
+
        }
 
         // --------------------------------- MOSTRAR reserva ------------------------------------------------
