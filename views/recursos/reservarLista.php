@@ -1,7 +1,7 @@
 <?php
-// VISTA PARA LA LISTA DE LIBROS
+// VISTA PARA LA LISTA DE reserva
 
-// Recuperamos la lista de libros
+// Recuperamos la lista de reserva
 $reservas = $data["reserva"];
 
 // Si hay algún mensaje de feedback, lo mostramos
@@ -20,7 +20,7 @@ echo "<form class='d-flex form-control' action='index.php'>
         <input class='btn btn-outline-dark' type='submit' value='Buscar'>
       </form><br>";
 
-// Ahora, la tabla con los datos de los recursos
+// Ahora, la tabla con los datos de los reserva
 if (count($reservas) == 0) {
   echo "No hay datos";
 } else {
