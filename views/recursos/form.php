@@ -36,6 +36,7 @@ if (isset($recursos)) {
 } else {
     echo "  <input type='hidden' name='action' value='insertaRecursos'>";
 }
-echo "<br>	<input class='btn btn-outline-success d-grid gap-2 col-2 mx-auto' type='submit'></form><br>";
+echo "<br>	<input class='btn btn-outline-success d-grid gap-2 col-2 mx-auto' type='submit'><br>";
+echo " <input class='btn btn-outline-danger d-grid gap-2 col-2 mx-auto' type='reset' value='Restablecer'></form><br>";
 echo "<p><a class='btn btn-outline-warning d-grid gap-2 col-2 mx-auto' href='index.php?action=mostrarListarecursos&controller=RecursosController'>Volver</a></p>";
 
